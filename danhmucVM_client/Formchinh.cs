@@ -45,11 +45,16 @@ namespace danhmucVM_client
         private ManualResetEvent dieukhienthread = new ManualResetEvent(true);
         Thread tudongloadanh;
         Thread capnhatanhmoi;
+        Thread LoadLandau;
 
         public Formchinh()
         {
             InitializeComponent();
-            
+
+            LoadLandau = new Thread(loadLandautien);
+            LoadLandau.IsBackground = true;
+            LoadLandau.Start();
+
             tudongloadanh = new Thread(hamtudongloadanh);
             tudongloadanh.IsBackground = true;
             tudongloadanh.Start();
@@ -58,11 +63,33 @@ namespace danhmucVM_client
             capnhatanhmoi.IsBackground = true;
             capnhatanhmoi.Start();
         }
+        void loadLandautien()
+        {
+            try
+            {
+                Thread.Sleep(1000);
+                var con = ketnoi.Instance();
+                ngaychonbandau = con.layngayganhat();
+                datag1.Invoke(new MethodInvoker(delegate ()
+                {
+                    datag1.DataSource = con.laythongtinngayganhat(ngaychonbandau);
+                }));
+                lbtongma.Invoke(new MethodInvoker(delegate ()
+                {
+                    lbtongma.Text = datag1.Rows.Count.ToString();
+                }));
+            }
+            catch (Exception ex)
+            {
+                NotificationHts("Có vấn đề");
+                lbtrangthai.Text = ex.ToString();
+            }
+        }
         void taianhstuserver()
         {
-           // try
+            try
             {
-               // while (true)
+                while (true)
                 {
                     Thread.Sleep(5000);
                     ftp ftpcapnhat = new ftp(@"ftp://27.72.29.28", "vm_kho", "2785");
@@ -79,11 +106,11 @@ namespace danhmucVM_client
                     Thread.Sleep(600000);
                 }
             }
-            //catch (Exception)
-            //{
+            catch (Exception)
+            {
 
-            //    return;
-            //}
+                return;
+            }
         }
         void hamtudongloadanh()
         {
@@ -117,21 +144,7 @@ namespace danhmucVM_client
         /// <param name="e"></param>
         private void Formchinh_Load(object sender, EventArgs e)
         {
-            try
-            {
-                var con = ketnoi.Instance();
-                ngaychonbandau = con.layngayganhat();
-                datag1.DataSource = con.laythongtinngayganhat(ngaychonbandau);
-                updatesoluongtrenbang();
-            }
-            catch (Exception ex)
-            {
-                NotificationHts("Có vấn đề");
-                lbtrangthai.Text = ex.ToString();
-            }
-           
-
-
+            
         }
         void laythongtinvaolabel(string mahang)
         {
@@ -512,9 +525,6 @@ namespace danhmucVM_client
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            taianhstuserver();
-        }
+        
     }
 }
