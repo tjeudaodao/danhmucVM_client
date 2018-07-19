@@ -268,6 +268,7 @@
             // lbtrangthai
             // 
             this.lbtrangthai.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbtrangthai.ForeColor = System.Drawing.Color.Crimson;
             this.lbtrangthai.Location = new System.Drawing.Point(104, 5);
             this.lbtrangthai.Name = "lbtrangthai";
             this.lbtrangthai.Size = new System.Drawing.Size(1176, 20);

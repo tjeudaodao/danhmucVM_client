@@ -67,17 +67,26 @@ namespace danhmucVM_client
         {
             try
             {
-                Thread.Sleep(1000);
-                var con = ketnoi.Instance();
-                ngaychonbandau = con.layngayganhat();
-                datag1.Invoke(new MethodInvoker(delegate ()
+                while (true)
                 {
-                    datag1.DataSource = con.laythongtinngayganhat(ngaychonbandau);
-                }));
-                lbtongma.Invoke(new MethodInvoker(delegate ()
-                {
-                    lbtongma.Text = datag1.Rows.Count.ToString();
-                }));
+                    Thread.Sleep(1000);
+                    var con = ketnoi.Instance();
+                    ngaychonbandau = con.layngayganhat();
+                    datag1.Invoke(new MethodInvoker(delegate ()
+                    {
+                        datag1.DataSource = con.laythongtinngayganhat(ngaychonbandau);
+                    }));
+                    lbtongma.Invoke(new MethodInvoker(delegate ()
+                    {
+                        lbtongma.Text = datag1.Rows.Count.ToString();
+                    }));
+                    lbtrangthai.Invoke(new MethodInvoker(delegate ()
+                    {
+                        lbtrangthai.Text = con.laytenFile();
+                    }));
+                    Thread.Sleep(300000);
+                }
+                
             }
             catch (Exception ex)
             {

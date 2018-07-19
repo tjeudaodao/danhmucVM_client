@@ -284,6 +284,27 @@ namespace danhmucVM_client
                 Close();
             }
         }
+
+        // lay ten file moi cap nhat gan nhat va thoi gian
+
+        public string laytenFile()
+        {
+            string sql = "select tenfile,gio from filedanhmucmoi";
+            Open();
+            MySqlCommand cmd = new MySqlCommand(sql, connection);
+            string h = null;
+            MySqlDataReader dtr = cmd.ExecuteReader();
+            if (dtr.Read() == true)
+            {
+                h = dtr[0].ToString() + " -- " + dtr[1].ToString();
+            }
+            Close();
+            if (h==null)
+            {
+                h = "--hts--";
+            }
+            return h;
+        }
         #endregion
     }
 }

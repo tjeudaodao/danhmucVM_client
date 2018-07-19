@@ -16,7 +16,7 @@ namespace danhmucVM_client
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Formchinh());
+            Application.Run(new form_login());
         }
     }
 }
