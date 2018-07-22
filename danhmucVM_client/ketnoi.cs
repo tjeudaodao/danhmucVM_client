@@ -12,7 +12,7 @@ namespace danhmucVM_client
         #region khoitao
         private ketnoi()
         {
-            string connstring = string.Format("Server=27.72.29.28;port=3306; database=cnf; User Id=kho; password=1234");
+            string connstring = string.Format("Server=27.72.29.28;port=3306; database=cnf; User Id=hts; password=hoanglaota");
             // string connstring = string.Format("Server=localhost;port=3306; database=cnf; User Id=hts; password=1211");
             connection = new MySqlConnection(connstring);
         }
@@ -304,6 +304,29 @@ namespace danhmucVM_client
                 h = "--hts--";
             }
             return h;
+        }
+
+        public string kiemtraTaikhoan(string tentaikhoan)
+        {
+            string h = null;
+            string sql = "select taikhoan from dangnhap where taikhoan = '" + tentaikhoan + "'";
+            Open();
+            MySqlCommand cmd = new MySqlCommand(sql, connection);
+            MySqlDataReader dtr = cmd.ExecuteReader();
+            if (dtr.Read())
+            {
+                h = dtr[0].ToString();
+            }
+            Close();
+            return h;
+        }
+        public void taotaikhoanmoi(string tentk,string pass)
+        {
+            string sql = " insert into dangnhap(taikhoan,pass) values('" + tentk + "','" + pass + "')";
+            Open();
+            MySqlCommand cmd = new MySqlCommand(sql, connection);
+            cmd.ExecuteNonQuery();
+            Close();
         }
         #endregion
     }
