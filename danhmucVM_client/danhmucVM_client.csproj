@@ -168,6 +168,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="pawprint_jFz_icon.ico" />
+    <None Include="Resources\totoro_smile__d_by_fluka-d3aamgw.jpg" />
     <None Include="Resources\exit.png" />
     <None Include="Resources\home-sketch.png" />
     <None Include="Resources\speaker %283%29.png" />

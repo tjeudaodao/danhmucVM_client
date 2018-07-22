@@ -47,7 +47,20 @@ namespace danhmucVM_client
         #endregion
 
         #region xu ly
-        
+        public string laytentaikhoan()
+        {
+            string h = null;
+            string sql = "select taikhoan from dangnhap";
+            Open();
+            SQLiteCommand cmd = new SQLiteCommand(sql, connec);
+            SQLiteDataReader dtr = cmd.ExecuteReader();
+            while (dtr.Read())
+            {
+                h = dtr[0].ToString();
+            }
+            Close();
+            return h;
+        }
         public string[] laytaikhoan()
         {
             string[] h = new string[2];

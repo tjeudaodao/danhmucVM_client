@@ -28,38 +28,41 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btndangnhap = new System.Windows.Forms.Button();
+            this.txtmatkhau = new System.Windows.Forms.TextBox();
+            this.txttaikhoan = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.chb_ghinho = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
-            // button1
+            // btndangnhap
             // 
-            this.button1.Font = new System.Drawing.Font("Comic Sans MS", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(75, 178);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(355, 46);
-            this.button1.TabIndex = 24;
-            this.button1.Text = "Đăng nhập";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btndangnhap.Font = new System.Drawing.Font("Comic Sans MS", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btndangnhap.Location = new System.Drawing.Point(75, 178);
+            this.btndangnhap.Name = "btndangnhap";
+            this.btndangnhap.Size = new System.Drawing.Size(355, 46);
+            this.btndangnhap.TabIndex = 0;
+            this.btndangnhap.Text = "Đăng nhập";
+            this.btndangnhap.UseVisualStyleBackColor = true;
+            this.btndangnhap.Click += new System.EventHandler(this.btndangnhap_Click);
             // 
-            // textBox2
+            // txtmatkhau
             // 
-            this.textBox2.Location = new System.Drawing.Point(257, 119);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PasswordChar = '*';
-            this.textBox2.Size = new System.Drawing.Size(172, 23);
-            this.textBox2.TabIndex = 22;
+            this.txtmatkhau.Location = new System.Drawing.Point(257, 119);
+            this.txtmatkhau.Name = "txtmatkhau";
+            this.txtmatkhau.PasswordChar = '*';
+            this.txtmatkhau.Size = new System.Drawing.Size(172, 23);
+            this.txtmatkhau.TabIndex = 2;
+            this.txtmatkhau.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtmatkhau_KeyDown);
             // 
-            // textBox1
+            // txttaikhoan
             // 
-            this.textBox1.Location = new System.Drawing.Point(257, 58);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(172, 23);
-            this.textBox1.TabIndex = 23;
+            this.txttaikhoan.Location = new System.Drawing.Point(257, 58);
+            this.txttaikhoan.Name = "txttaikhoan";
+            this.txttaikhoan.Size = new System.Drawing.Size(172, 23);
+            this.txttaikhoan.TabIndex = 1;
+            this.txttaikhoan.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txttaikhoan_KeyDown);
             // 
             // label4
             // 
@@ -81,30 +84,32 @@
             this.label2.TabIndex = 21;
             this.label2.Text = "Tên tài khoản: ";
             // 
-            // checkBox1
+            // chb_ghinho
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(75, 247);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(322, 19);
-            this.checkBox1.TabIndex = 25;
-            this.checkBox1.Text = "Ghi nhớ tài khoản và mật khẩu - Tư động đăng nhập lần sau";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.chb_ghinho.AutoSize = true;
+            this.chb_ghinho.Location = new System.Drawing.Point(75, 247);
+            this.chb_ghinho.Name = "chb_ghinho";
+            this.chb_ghinho.Size = new System.Drawing.Size(322, 19);
+            this.chb_ghinho.TabIndex = 3;
+            this.chb_ghinho.Text = "Ghi nhớ tài khoản và mật khẩu - Tư động đăng nhập lần sau";
+            this.chb_ghinho.UseVisualStyleBackColor = true;
+            this.chb_ghinho.CheckedChanged += new System.EventHandler(this.chb_ghinho_CheckedChanged);
             // 
             // dangnhap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.chb_ghinho);
+            this.Controls.Add(this.btndangnhap);
+            this.Controls.Add(this.txtmatkhau);
+            this.Controls.Add(this.txttaikhoan);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "dangnhap";
             this.Size = new System.Drawing.Size(500, 300);
+            this.Load += new System.EventHandler(this.dangnhap_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -112,11 +117,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btndangnhap;
+        private System.Windows.Forms.TextBox txtmatkhau;
+        private System.Windows.Forms.TextBox txttaikhoan;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox chb_ghinho;
     }
 }

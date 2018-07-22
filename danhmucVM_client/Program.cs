@@ -8,6 +8,7 @@ namespace danhmucVM_client
 {
     static class Program
     {
+        public static bool moFrom { get; set; }
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -16,7 +17,12 @@ namespace danhmucVM_client
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            moFrom = false;
             Application.Run(new form_login());
+            if (moFrom)
+            {
+                Application.Run(new Formchinh());
+            }
         }
     }
 }

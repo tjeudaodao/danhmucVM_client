@@ -27,6 +27,7 @@ namespace danhmucVM_client
                 if (tk == null)
                 {
                     conmy.taotaikhoanmoi(txttaikhoan.Text, txtmatkhau.Text);
+                    conmy.themcotmoi_hangduocban(txttaikhoan.Text);
                     conlite.updatetaikhoan(txttaikhoan.Text, txtmatkhau.Text);
                     MessageBox.Show("Tạo tài khoản thành công\nTên tài khoản là: \"" + txttaikhoan.Text + "\"");
                 }

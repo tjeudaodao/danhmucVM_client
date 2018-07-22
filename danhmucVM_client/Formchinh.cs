@@ -47,21 +47,23 @@ namespace danhmucVM_client
         Thread capnhatanhmoi;
         Thread LoadLandau;
 
+        string tencottrunghang = null;
+
         public Formchinh()
         {
             InitializeComponent();
 
             LoadLandau = new Thread(loadLandautien);
             LoadLandau.IsBackground = true;
-            LoadLandau.Start();
+           // LoadLandau.Start();
 
             tudongloadanh = new Thread(hamtudongloadanh);
             tudongloadanh.IsBackground = true;
-            tudongloadanh.Start();
+            //tudongloadanh.Start();
 
             capnhatanhmoi = new Thread(taianhstuserver);
             capnhatanhmoi.IsBackground = true;
-            capnhatanhmoi.Start();
+           // capnhatanhmoi.Start();
         }
         void loadLandautien()
         {
@@ -153,7 +155,8 @@ namespace danhmucVM_client
         /// <param name="e"></param>
         private void Formchinh_Load(object sender, EventArgs e)
         {
-            
+            var con = ketnoisqlite.khoitao();
+            tencottrunghang = con.laytentaikhoan();
         }
         void laythongtinvaolabel(string mahang)
         {

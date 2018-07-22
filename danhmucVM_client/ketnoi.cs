@@ -328,6 +328,14 @@ namespace danhmucVM_client
             cmd.ExecuteNonQuery();
             Close();
         }
+        public void themcotmoi_hangduocban(string tencot)
+        {
+            string sql = "ALTER TABLE hangduocban ADD COLUMN '" + tencot + "' VARCHAR(20)";
+            Open();
+            MySqlCommand cmd = new MySqlCommand(sql, connection);
+            cmd.ExecuteNonQuery();
+            Close();
+        }
         #endregion
     }
 }

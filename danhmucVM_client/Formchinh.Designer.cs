@@ -452,6 +452,7 @@
             this.Controls.Add(this.datag1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.monthCalendar1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "Formchinh";
