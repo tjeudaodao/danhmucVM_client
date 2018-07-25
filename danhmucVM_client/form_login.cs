@@ -17,6 +17,8 @@ namespace danhmucVM_client
         dangnhap usdangnhap = new dangnhap();
         taotaikhoan ustaotaikhoan = new taotaikhoan();
         Thread chay3giay;
+        Thread khoidong;
+
         private ManualResetEvent dieukhien = new ManualResetEvent(true);
 
         public form_login()
@@ -24,19 +26,48 @@ namespace danhmucVM_client
             InitializeComponent();
             
         }
+        void khoidongct()
+        {
+            var con = ketnoisqlite.khoitao();
+
+            var conmy = ketnoi.Instance();
+
+            string ghinho = con.laygiatri_ghinho();
+            string[] tentk = con.laytaikhoan();
+
+            bool check = conmy.kiemtraTaikhoan(tentk[0], tentk[1]);
+            if (ghinho != "OK")
+            {
+                hamload();
+            }
+            else if (ghinho == "OK" && !string.IsNullOrEmpty(tentk[0]) && !string.IsNullOrEmpty(tentk[1]) && check)
+            {
+                lbchaomung.Invoke(new MethodInvoker(delegate ()
+                {
+                    lbchaomung.Text = "WELCOME ... " + tentk[0].ToUpper();
+                }));
+                
+                chay3giay = new Thread(ham3giay);
+                chay3giay.IsBackground = true;
+                chay3giay.Start();
+            }
+            else
+            {
+                this.Invoke(new MethodInvoker(delegate ()
+                {
+
+                    MessageBox.Show("Xem lại tài khoản và mật khẩu");
+                }));
+                usdangnhap.Location = new Point(150, 260);
+                usdangnhap.Name = "usdangnhap";
+                this.Controls.Add(usdangnhap);
+
+                usdangnhap.Show();
+                usdangnhap.BringToFront();
+            }
+        }
         void hamload()
         {
-            usdangnhap.Location = new Point(150, 260);
-            usdangnhap.Name = "usdangnhap";
-            this.Controls.Add(usdangnhap);
-
-            ustaotaikhoan.Location = new Point(150, 260);
-            ustaotaikhoan.Name = "ustaotaikhoan";
-            this.Controls.Add(ustaotaikhoan);
-
-            usdangnhap.Hide();
-            ustaotaikhoan.Hide();
-
             var con = ketnoisqlite.khoitao();
             string[] taikhoan = new string[2];
             taikhoan = con.laytaikhoan();
@@ -44,11 +75,19 @@ namespace danhmucVM_client
 
             if (string.IsNullOrEmpty(taikhoan[0]) || string.IsNullOrEmpty(taikhoan[1]))
             {
+                ustaotaikhoan.Location = new Point(150, 260);
+                ustaotaikhoan.Name = "ustaotaikhoan";
+                this.Controls.Add(ustaotaikhoan);
+
                 ustaotaikhoan.Show();
                 ustaotaikhoan.BringToFront();
             }
             else
             {
+                usdangnhap.Location = new Point(150, 260);
+                usdangnhap.Name = "usdangnhap";
+                this.Controls.Add(usdangnhap);
+
                 usdangnhap.Show();
                 usdangnhap.BringToFront();
             }
@@ -60,19 +99,18 @@ namespace danhmucVM_client
 
         private void form_login_Load(object sender, EventArgs e)
         {
-            var con = ketnoisqlite.khoitao();
-            string ghinho = con.laygiatri_ghinho();
-            string[] tentk = con.laytaikhoan();
-            if (ghinho != "OK")
+            try
             {
-                hamload();
+                khoidong = new Thread(khoidongct);
+                khoidong.IsBackground = true;
+                khoidong.Start();
             }
-            else if(ghinho =="OK" && !string.IsNullOrEmpty(tentk[0]) && !string.IsNullOrEmpty(tentk[1]) )
+            catch (Exception)
             {
-                chay3giay = new Thread(ham3giay);
-                chay3giay.IsBackground = true;
-                chay3giay.Start();
+                MessageBox.Show("Có lỗi kết nối mạng");
+                throw;
             }
+            
         }
         void ham3giay()
         {

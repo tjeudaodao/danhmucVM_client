@@ -12,6 +12,7 @@ namespace danhmucVM_client
 {
     public partial class taotaikhoan : UserControl
     {
+        dangnhap usdangnhap = null;
         public taotaikhoan()
         {
             InitializeComponent();
@@ -29,7 +30,12 @@ namespace danhmucVM_client
                     conmy.taotaikhoanmoi(txttaikhoan.Text, txtmatkhau.Text);
                     conmy.themcotmoi_hangduocban(txttaikhoan.Text);
                     conlite.updatetaikhoan(txttaikhoan.Text, txtmatkhau.Text);
+                    
                     MessageBox.Show("Tạo tài khoản thành công\nTên tài khoản là: \"" + txttaikhoan.Text + "\"");
+
+                    usdangnhap = new dangnhap();
+                    this.Controls.Add(usdangnhap);
+                    usdangnhap.BringToFront();
                 }
                 else
                 {
@@ -49,7 +55,16 @@ namespace danhmucVM_client
         }
         private void btntaotaikhoan_Click(object sender, EventArgs e)
         {
-            hamDangky();
+            try
+            {
+                hamDangky();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Có lỗi kết nối mạng");
+                return;
+            }
+            
         }
 
         private void txttaikhoan_KeyDown(object sender, KeyEventArgs e)

@@ -13,7 +13,7 @@ namespace danhmucVM_client
     class ketnoisqlite
     {
         #region khoitao
-        public static SQLiteConnection connec = null;
+        public  SQLiteConnection connec = null;
         public ketnoisqlite()
         {
             string chuoiketnoi = "Data Source=dbdangnhap.db;version=3;new=false";
@@ -96,6 +96,7 @@ namespace danhmucVM_client
             {
                 h = dtr[0].ToString();
             }
+            Close();
             return h;
         }
         public void update_ghinho(string thaydoi)

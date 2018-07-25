@@ -17,8 +17,12 @@ namespace danhmucVM_client
             connection = new MySqlConnection(connstring);
         }
 
-        private MySqlConnection connection = null;
-
+        private  MySqlConnection connection = null;
+        private static string cottrunghang = null;
+        public static void SettenaCottrunghang(string tencot)
+        {
+            cottrunghang = tencot;
+        }
         private static ketnoi _instance = null;
         public static ketnoi Instance()
         {
@@ -37,7 +41,6 @@ namespace danhmucVM_client
             }
             catch (Exception)
             {
-
                 return;
             }
             
@@ -139,7 +142,7 @@ namespace danhmucVM_client
         #region xu ly tren form
         public DataTable loctheotenmatong(string matong)
         {
-            string sql = string.Format("SELECT matong as 'Mã tổng',mota as 'Mô tả',chude as 'Chủ đề',ghichu as 'Ghi chú',ngayban as 'Ngày bán',trunghang2 as 'Trưng hàng' FROM hangduocban where matong like '{0}%' Group by matong", matong);
+            string sql = string.Format("SELECT matong as 'Mã tổng',mota as 'Mô tả',chude as 'Chủ đề',ghichu as 'Ghi chú',ngayban as 'Ngày bán',{0} as 'Trưng hàng' FROM hangduocban where matong like '{1}%' Group by matong", cottrunghang ,matong);
             DataTable dt = new DataTable();
             Open();
             MySqlDataAdapter dta = new MySqlDataAdapter(sql, connection);
@@ -165,7 +168,7 @@ namespace danhmucVM_client
         // lay thong tin trung hang
         public string laythongtintrunghang(string matong)
         {
-            string sql = string.Format("select trunghang2 from hangduocban where matong='{0}'", matong);
+            string sql = string.Format("select {1} from hangduocban where matong='{0}'", matong,cottrunghang);
             string h = null;
             Open();
             MySqlCommand cmd = new MySqlCommand(sql, connection);
@@ -209,7 +212,7 @@ namespace danhmucVM_client
         }
         public DataTable laythongtinngayganhat(string ngaygannhat)
         {
-            string sql = string.Format("SELECT matong as 'Mã tổng',mota as 'Mô tả',chude as 'Chủ đề',ghichu as 'Ghi chú',ngayban as 'Ngày bán',trunghang2 as 'Trưng hàng' FROM hangduocban where ngaydangso = '{0}' Group by matong", ngaygannhat);
+            string sql = string.Format("SELECT matong as 'Mã tổng',mota as 'Mô tả',chude as 'Chủ đề',ghichu as 'Ghi chú',ngayban as 'Ngày bán',{1} as 'Trưng hàng' FROM hangduocban where ngaydangso = '{0}' Group by matong", ngaygannhat,cottrunghang);
             DataTable dt = new DataTable();
             Open();
             MySqlDataAdapter dta = new MySqlDataAdapter(sql, connection);
@@ -220,7 +223,7 @@ namespace danhmucVM_client
         // lay thong tin khi kich chon ngay
         public DataTable laythongtinkhichonngay(string ngaychon)
         {
-            string sql = string.Format("SELECT matong as 'Mã tổng',mota as 'Mô tả',chude as 'Chủ đề',ghichu as 'Ghi chú',ngayban as 'Ngày bán',trunghang2 as 'Trưng hàng' FROM hangduocban where ngayban = '{0}' Group by matong", ngaychon);
+            string sql = string.Format("SELECT matong as 'Mã tổng',mota as 'Mô tả',chude as 'Chủ đề',ghichu as 'Ghi chú',ngayban as 'Ngày bán',{1} as 'Trưng hàng' FROM hangduocban where ngayban = '{0}' Group by matong", ngaychon,cottrunghang);
             DataTable dt = new DataTable();
             Open();
             MySqlDataAdapter dta = new MySqlDataAdapter(sql, connection);
@@ -240,7 +243,7 @@ namespace danhmucVM_client
         // xuat bang khi chon khoang ngay cho viec xuat excel va in
         public DataTable laythongtinkhoangngay(string ngaybatday, string ngayketthuc)
         {
-            string sql = string.Format("SELECT matong as 'Mã tổng',mota as 'Mô tả',chude as 'Chủ đề',ghichu as 'Ghi chú',ngayban as 'Ngày bán',trunghang2 as 'Trưng hàng' FROM hangduocban where ngaydangso >= '{0}' and ngaydangso <= '{1}' Group by matong", ngaybatday, ngayketthuc);
+            string sql = string.Format("SELECT matong as 'Mã tổng',mota as 'Mô tả',chude as 'Chủ đề',ghichu as 'Ghi chú',ngayban as 'Ngày bán',{2} as 'Trưng hàng' FROM hangduocban where ngaydangso >= '{0}' and ngaydangso <= '{1}' Group by matong", ngaybatday, ngayketthuc,cottrunghang);
             DataTable dt = new DataTable();
             Open();
             MySqlDataAdapter dta = new MySqlDataAdapter(sql, connection);
@@ -262,9 +265,9 @@ namespace danhmucVM_client
         // update gia tri cot trung hang thanh " da trung hang"
         public void updatedatrunghangthanhdatrung(string matong)
         {
-            if (Kiemtra("trunghang2", "hangduocban", "matong", matong) == null || Kiemtra("trunghang2", "hangduocban", "matong", matong) == "Chưa trưng bán" || Kiemtra("trunghang2", "hangduocban", "matong", matong) == "")
+            if (Kiemtra(cottrunghang, "hangduocban", "matong", matong) == null || Kiemtra(cottrunghang, "hangduocban", "matong", matong) == "Chưa trưng bán" || Kiemtra(cottrunghang, "hangduocban", "matong", matong) == "")
             {
-                string sql = string.Format("UPDATE hangduocban SET trunghang2='{0}' WHERE matong='{1}'", "Đã Trưng Bán", matong);
+                string sql = string.Format("UPDATE hangduocban SET {2}='{0}' WHERE matong='{1}'", "Đã Trưng Bán", matong,cottrunghang);
                 MySqlCommand cmd = new MySqlCommand(sql, connection);
                 Open();
                 cmd.ExecuteNonQuery();
@@ -275,9 +278,9 @@ namespace danhmucVM_client
         // update thanh chua trung hang
         public void updatetrunghangthanhchuatrung(string matong)
         {
-            if (Kiemtra("trunghang2", "hangduocban", "matong", matong) == "Đã Trưng Bán")
+            if (Kiemtra(cottrunghang, "hangduocban", "matong", matong) == "Đã Trưng Bán" || Kiemtra(cottrunghang, "hangduocban", "matong", matong) == null)
             {
-                string sql = string.Format("UPDATE hangduocban SET trunghang2='{0}' WHERE matong='{1}'", "Chưa trưng bán", matong);
+                string sql = string.Format("UPDATE hangduocban SET {2}='{0}' WHERE matong='{1}'", "Chưa trưng bán", matong,cottrunghang);
                 MySqlCommand cmd = new MySqlCommand(sql, connection);
                 Open();
                 cmd.ExecuteNonQuery();
@@ -294,7 +297,7 @@ namespace danhmucVM_client
             MySqlCommand cmd = new MySqlCommand(sql, connection);
             string h = null;
             MySqlDataReader dtr = cmd.ExecuteReader();
-            if (dtr.Read() == true)
+            if (dtr.Read())
             {
                 h = dtr[0].ToString() + " -- " + dtr[1].ToString();
             }
@@ -320,6 +323,26 @@ namespace danhmucVM_client
             Close();
             return h;
         }
+        public bool kiemtraTaikhoan(string tentaikhoan,string pass)
+        {
+            bool b = false;
+            string h = null;
+            string sql = "select taikhoan,pass from dangnhap where taikhoan = '" + tentaikhoan + "' and pass = '"+pass+"' ";
+            Open();
+            MySqlCommand cmd = new MySqlCommand(sql, connection);
+            MySqlDataReader dtr = cmd.ExecuteReader();
+            if (dtr.Read())
+            {
+                h = dtr[0].ToString();
+                if (h==null)
+                {
+                    b = false;
+                }
+                else b = true;
+            }
+            Close();
+            return b;
+        }
         public void taotaikhoanmoi(string tentk,string pass)
         {
             string sql = " insert into dangnhap(taikhoan,pass) values('" + tentk + "','" + pass + "')";
@@ -330,7 +353,7 @@ namespace danhmucVM_client
         }
         public void themcotmoi_hangduocban(string tencot)
         {
-            string sql = "ALTER TABLE hangduocban ADD COLUMN '" + tencot + "' VARCHAR(20)";
+            string sql = string.Format("ALTER TABLE hangduocban ADD COLUMN {0} VARCHAR(20)",tencot);
             Open();
             MySqlCommand cmd = new MySqlCommand(sql, connection);
             cmd.ExecuteNonQuery();

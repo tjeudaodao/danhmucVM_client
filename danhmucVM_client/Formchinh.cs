@@ -46,24 +46,25 @@ namespace danhmucVM_client
         Thread tudongloadanh;
         Thread capnhatanhmoi;
         Thread LoadLandau;
-
-        string tencottrunghang = null;
-
+        
         public Formchinh()
         {
             InitializeComponent();
-
+            if (!Directory.Exists(duongdanchuaanh))
+            {
+                Directory.CreateDirectory(duongdanchuaanh);
+            }
             LoadLandau = new Thread(loadLandautien);
             LoadLandau.IsBackground = true;
-           // LoadLandau.Start();
+            LoadLandau.Start();
 
             tudongloadanh = new Thread(hamtudongloadanh);
             tudongloadanh.IsBackground = true;
-            //tudongloadanh.Start();
+            tudongloadanh.Start();
 
             capnhatanhmoi = new Thread(taianhstuserver);
             capnhatanhmoi.IsBackground = true;
-           // capnhatanhmoi.Start();
+            capnhatanhmoi.Start();
         }
         void loadLandautien()
         {
@@ -74,6 +75,7 @@ namespace danhmucVM_client
                     Thread.Sleep(1000);
                     var con = ketnoi.Instance();
                     ngaychonbandau = con.layngayganhat();
+
                     datag1.Invoke(new MethodInvoker(delegate ()
                     {
                         datag1.DataSource = con.laythongtinngayganhat(ngaychonbandau);
@@ -156,7 +158,7 @@ namespace danhmucVM_client
         private void Formchinh_Load(object sender, EventArgs e)
         {
             var con = ketnoisqlite.khoitao();
-            tencottrunghang = con.laytentaikhoan();
+            ketnoi.SettenaCottrunghang(con.laytentaikhoan());
         }
         void laythongtinvaolabel(string mahang)
         {
@@ -232,6 +234,10 @@ namespace danhmucVM_client
                         sodongchon = datag1.SelectedRows.Count;
                         NotificationHts("Vừa cập nhật : " + sodongchon.ToString() + " mã hàng");
                     }
+                    if (ngaychonbandau == null)
+                    {
+                        ngaychonbandau = con.layngayganhat();
+                    }
                     datag1.DataSource = con.laythongtinkhichonngay(ngaychonbandau);
                 }
             }
@@ -257,6 +263,10 @@ namespace danhmucVM_client
                         con.updatetrunghangthanhchuatrung(matong);
                         sodongchon = datag1.SelectedRows.Count;
                         NotificationHts("Vừa cập nhật : " + sodongchon.ToString() + " mã hàng");
+                    }
+                    if (ngaychonbandau == null)
+                    {
+                        ngaychonbandau = con.layngayganhat();
                     }
                     datag1.DataSource = con.laythongtinkhichonngay(ngaychonbandau);
                 }

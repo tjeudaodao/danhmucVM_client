@@ -12,6 +12,7 @@ namespace danhmucVM_client
 {
     public partial class dangnhap : UserControl
     {
+        static bool check = false;
         public dangnhap()
         {
             InitializeComponent();
@@ -19,6 +20,7 @@ namespace danhmucVM_client
             string[] tk = consqlite.laytaikhoan();
             txttaikhoan.Text = tk[0];
             txtmatkhau.Text = tk[1];
+            
 
             btndangnhap.Select();
             btndangnhap.Focus();
@@ -42,8 +44,17 @@ namespace danhmucVM_client
 
         private void btndangnhap_Click(object sender, EventArgs e)
         {
-            Program.moFrom = true;
-            ((Form)this.TopLevelControl).Close();
+            var conmy = ketnoi.Instance();
+            check = conmy.kiemtraTaikhoan(txttaikhoan.Text, txtmatkhau.Text);
+            if (check)
+            {
+                Program.moFrom = true;
+                ((Form)this.TopLevelControl).Close();
+            }
+            else
+            {
+                MessageBox.Show("Xem lại tài khoản và mật khẩu");
+            }
         }
 
         private void chb_ghinho_CheckedChanged(object sender, EventArgs e)
@@ -52,6 +63,7 @@ namespace danhmucVM_client
             {
                 var consqlie = ketnoisqlite.khoitao();
                 consqlie.update_ghinho("OK");
+                consqlie.updatetaikhoan(txttaikhoan.Text, txtmatkhau.Text);
             }
             else
             {

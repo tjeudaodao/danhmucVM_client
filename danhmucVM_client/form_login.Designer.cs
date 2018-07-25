@@ -86,6 +86,7 @@
             // lblogin
             // 
             this.lblogin.Font = new System.Drawing.Font("Comic Sans MS", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblogin.ForeColor = System.Drawing.Color.Crimson;
             this.lblogin.Location = new System.Drawing.Point(310, 505);
             this.lblogin.Name = "lblogin";
             this.lblogin.Size = new System.Drawing.Size(219, 27);
@@ -95,10 +96,12 @@
             // 
             // lbchaomung
             // 
-            this.lbchaomung.Font = new System.Drawing.Font("Comic Sans MS", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbchaomung.Location = new System.Drawing.Point(310, 300);
+            this.lbchaomung.BackColor = System.Drawing.Color.White;
+            this.lbchaomung.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbchaomung.ForeColor = System.Drawing.Color.Crimson;
+            this.lbchaomung.Location = new System.Drawing.Point(265, 304);
             this.lbchaomung.Name = "lbchaomung";
-            this.lbchaomung.Size = new System.Drawing.Size(219, 27);
+            this.lbchaomung.Size = new System.Drawing.Size(312, 37);
             this.lbchaomung.TabIndex = 3;
             this.lbchaomung.Text = "-";
             this.lbchaomung.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
