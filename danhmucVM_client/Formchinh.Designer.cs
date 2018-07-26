@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Formchinh));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.txtbarcode = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -215,25 +215,25 @@
             this.datag1.AllowUserToDeleteRows = false;
             this.datag1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.datag1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.datag1.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.datag1.BackgroundColor = System.Drawing.Color.White;
             this.datag1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.datag1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.datag1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.datag1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.datag1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.datag1.DefaultCellStyle = dataGridViewCellStyle4;
             this.datag1.Location = new System.Drawing.Point(18, 243);
             this.datag1.Name = "datag1";
             this.datag1.RowHeadersVisible = false;
@@ -365,11 +365,11 @@
             // 
             // btnchuatrunghang
             // 
-            this.btnchuatrunghang.BackColor = System.Drawing.Color.DarkGray;
+            this.btnchuatrunghang.BackColor = System.Drawing.Color.Gainsboro;
             this.btnchuatrunghang.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnchuatrunghang.ForeColor = System.Drawing.Color.Purple;
             this.btnchuatrunghang.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnchuatrunghang.Location = new System.Drawing.Point(461, 14);
+            this.btnchuatrunghang.Location = new System.Drawing.Point(359, 13);
             this.btnchuatrunghang.Name = "btnchuatrunghang";
             this.btnchuatrunghang.Size = new System.Drawing.Size(167, 41);
             this.btnchuatrunghang.TabIndex = 6;
@@ -379,11 +379,11 @@
             // 
             // btndatrunghang
             // 
-            this.btndatrunghang.BackColor = System.Drawing.Color.DarkGray;
+            this.btndatrunghang.BackColor = System.Drawing.Color.Gainsboro;
             this.btndatrunghang.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btndatrunghang.ForeColor = System.Drawing.Color.Navy;
             this.btndatrunghang.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btndatrunghang.Location = new System.Drawing.Point(59, 16);
+            this.btndatrunghang.Location = new System.Drawing.Point(39, 14);
             this.btndatrunghang.Name = "btndatrunghang";
             this.btndatrunghang.Size = new System.Drawing.Size(166, 41);
             this.btndatrunghang.TabIndex = 6;
@@ -405,9 +405,9 @@
             this.groupBox3.Controls.Add(this.btndatrunghang);
             this.groupBox3.Controls.Add(this.btnchuatrunghang);
             this.groupBox3.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(260, 176);
+            this.groupBox3.Location = new System.Drawing.Point(455, 176);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(740, 61);
+            this.groupBox3.Size = new System.Drawing.Size(545, 61);
             this.groupBox3.TabIndex = 17;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Update mã chọn vào danh sách đã trưng";
@@ -425,7 +425,7 @@
             // 
             // lbtongma
             // 
-            this.lbtongma.BackColor = System.Drawing.SystemColors.Control;
+            this.lbtongma.BackColor = System.Drawing.Color.Gainsboro;
             this.lbtongma.Font = new System.Drawing.Font("Comic Sans MS", 21F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbtongma.ForeColor = System.Drawing.Color.DarkCyan;
             this.lbtongma.Location = new System.Drawing.Point(20, 16);

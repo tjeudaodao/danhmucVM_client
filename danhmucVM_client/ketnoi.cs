@@ -254,7 +254,7 @@ namespace danhmucVM_client
         // xuatbang cho viec in chi lay 3 cot matong bst ngayban
         public DataTable laythongtinIn(string ngaybatdau, string ngayketthuc)
         {
-            string sql = string.Format("SELECT matong as 'Mã tổng',chude as 'Chủ đề',ngayban as 'Ngày bán' FROM hangduocban where ngaydangso >= '{0}' and ngaydangso <= '{1}'", ngaybatdau, ngayketthuc);
+            string sql = string.Format("SELECT matong as 'Mã tổng',chude as 'Chủ đề',{2} as 'Trưng hàng' FROM hangduocban where ngaydangso >= '{0}' and ngaydangso <= '{1}'", ngaybatdau, ngayketthuc,cottrunghang);
             DataTable dt = new DataTable();
             Open();
             MySqlDataAdapter dta = new MySqlDataAdapter(sql, connection);

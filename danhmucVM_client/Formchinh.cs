@@ -158,7 +158,9 @@ namespace danhmucVM_client
         private void Formchinh_Load(object sender, EventArgs e)
         {
             var con = ketnoisqlite.khoitao();
-            ketnoi.SettenaCottrunghang(con.laytentaikhoan());
+            string tentk = con.laytentaikhoan();
+            ketnoi.SettenaCottrunghang(tentk);
+            this.Text = "Danh mục VM -- Tài khoản : " + tentk.ToUpper();
         }
         void laythongtinvaolabel(string mahang)
         {
@@ -201,6 +203,7 @@ namespace danhmucVM_client
                 lbdatrunghaychua.Text = "Chưa trưng bán";
                 lbduocbanhaychua.Text = "Chưa được bán";
                 phatAMTHANH_KOBAN();
+                loadanh(mahang);
             }
 
         }
@@ -461,10 +464,11 @@ namespace danhmucVM_client
                 DataTable dt = new DataTable();
                 dt = con.laythongtinkhoangngay(ngaybatdau, ngayketthuc);
                 string tongsoma = con.tongmatrongkhoangngaychon(ngaybatdau, ngayketthuc);
-
-                if (ham.Xuatfileexcel(dt, ngaybatdau, ngayketthuc, tongsoma))
+                DialogResult dlog = MessageBox.Show("Có muốn lưu file excel không hay in luôn. \nNhấn 'YES' sẽ lưu file và 'NO' sẽ in luôn","IN LUÔN ?",MessageBoxButtons.YesNo);
+                if (dlog == DialogResult.Yes)
                 {
-                    ham.taovainfileexcel(con.laythongtinIn(ngaybatdau, ngayketthuc), tongsoma);
+                    ham.Xuatfileexcel(dt, ngaybatdau, ngayketthuc, tongsoma);
+                    ham.taovainfileexcel(con.laythongtinIn(ngaybatdau, ngayketthuc), tongsoma, ngaybatdau, ngayketthuc);
 
                     PopupNotifier popexcel = new PopupNotifier();
                     popexcel.TitleText = "Thông báo";
@@ -484,8 +488,54 @@ namespace danhmucVM_client
                     popexcel.HeaderHeight = 1;
                     popexcel.Click += Popexcel_Click;
                     popexcel.Popup();
-
                 }
+                else
+                {
+                    ham.taovainfileexcel(con.laythongtinIn(ngaybatdau, ngayketthuc), tongsoma, ngaybatdau, ngayketthuc);
+
+                    PopupNotifier popexcel = new PopupNotifier();
+                    popexcel.TitleText = "Thông báo";
+                    popexcel.ContentText = "Vừa xuất file excel \nClick vào đây để mở file";
+                    popexcel.IsRightToLeft = false;
+                    popexcel.Image = Properties.Resources.excel;
+                    popexcel.TitleColor = System.Drawing.Color.Navy;
+                    popexcel.TitleFont = new System.Drawing.Font("Comic Sans MS", 12, System.Drawing.FontStyle.Underline);
+                    popexcel.BodyColor = System.Drawing.Color.DimGray;
+                    popexcel.Size = new System.Drawing.Size(380, 130);
+                    popexcel.ImageSize = new System.Drawing.Size(100, 100);
+                    popexcel.ImagePadding = new Padding(15);
+                    popexcel.ContentColor = System.Drawing.Color.White;
+                    popexcel.ContentFont = new System.Drawing.Font("Comic Sans MS", 15, System.Drawing.FontStyle.Bold);
+                    popexcel.Delay = 3500;
+                    popexcel.BorderColor = System.Drawing.Color.DimGray;
+                    popexcel.HeaderHeight = 1;
+                    popexcel.Click += Popexcel_Click;
+                    popexcel.Popup();
+                }
+                //if (ham.Xuatfileexcel(dt, ngaybatdau, ngayketthuc, tongsoma))
+                //{
+                //    ham.taovainfileexcel(con.laythongtinIn(ngaybatdau, ngayketthuc), tongsoma,ngaybatdau,ngayketthuc);
+
+                //    PopupNotifier popexcel = new PopupNotifier();
+                //    popexcel.TitleText = "Thông báo";
+                //    popexcel.ContentText = "Vừa xuất file excel \nClick vào đây để mở file";
+                //    popexcel.IsRightToLeft = false;
+                //    popexcel.Image = Properties.Resources.excel;
+                //    popexcel.TitleColor = System.Drawing.Color.Navy;
+                //    popexcel.TitleFont = new System.Drawing.Font("Comic Sans MS", 12, System.Drawing.FontStyle.Underline);
+                //    popexcel.BodyColor = System.Drawing.Color.DimGray;
+                //    popexcel.Size = new System.Drawing.Size(380, 130);
+                //    popexcel.ImageSize = new System.Drawing.Size(100, 100);
+                //    popexcel.ImagePadding = new Padding(15);
+                //    popexcel.ContentColor = System.Drawing.Color.White;
+                //    popexcel.ContentFont = new System.Drawing.Font("Comic Sans MS", 15, System.Drawing.FontStyle.Bold);
+                //    popexcel.Delay = 3500;
+                //    popexcel.BorderColor = System.Drawing.Color.DimGray;
+                //    popexcel.HeaderHeight = 1;
+                //    popexcel.Click += Popexcel_Click;
+                //    popexcel.Popup();
+
+                //}
 
 
             }
