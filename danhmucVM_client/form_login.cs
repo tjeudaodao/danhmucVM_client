@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.IO;
 using System.Threading;
 
 namespace danhmucVM_client
@@ -104,6 +104,10 @@ namespace danhmucVM_client
                 //khoidong = new Thread(khoidongct);
                 //khoidong.IsBackground = true;
                 //khoidong.Start();
+                if (!Directory.Exists(Application.StartupPath + @"\luuanh"))
+                {
+                    Directory.CreateDirectory(Application.StartupPath + @"\luuanh");
+                }
                 var con = ketnoisqlite.khoitao();
 
                 var conmy = ketnoi.Instance();
@@ -146,7 +150,7 @@ namespace danhmucVM_client
         }
         void ham3giay()
         {
-            pbavatar.Image = Properties.Resources.avatar;
+            pbavatar.Image = Properties.Resources.loading_meo;
             for (int i = 3; i > 0; i--)
             {
                 lblogin.Invoke(new MethodInvoker(delegate ()

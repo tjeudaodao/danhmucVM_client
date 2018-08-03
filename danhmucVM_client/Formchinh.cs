@@ -86,7 +86,7 @@ namespace danhmucVM_client
                     }));
                     lbtrangthai.Invoke(new MethodInvoker(delegate ()
                     {
-                        lbtrangthai.Text = con.laytenFile();
+                        lbtrangthai.Text = "File cập nhật gần nhất: -->> "+con.laytenFile();
                     }));
                     Thread.Sleep(300000);
                 }
@@ -95,7 +95,11 @@ namespace danhmucVM_client
             catch (Exception ex)
             {
                 NotificationHts("Có vấn đề");
-                lbtrangthai.Text = ex.ToString();
+                lbtrangthai.Invoke(new MethodInvoker(delegate ()
+                {
+                    lbtrangthai.Text = ex.ToString();
+                }));
+               
             }
         }
         void taianhstuserver()

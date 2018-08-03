@@ -131,6 +131,16 @@ namespace danhmucVM_client.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap loading_meo {
+            get {
+                object obj = ResourceManager.GetObject("loading_meo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap mute {
             get {
                 object obj = ResourceManager.GetObject("mute", resourceCulture);

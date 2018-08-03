@@ -45,9 +45,15 @@ namespace danhmucVM_client
         private void btndangnhap_Click(object sender, EventArgs e)
         {
             var conmy = ketnoi.Instance();
+            var conlite = ketnoisqlite.khoitao();
+            string tentk = conlite.laytentaikhoan();
             check = conmy.kiemtraTaikhoan(txttaikhoan.Text, txtmatkhau.Text);
             if (check)
             {
+                if (tentk != txttaikhoan.Text)
+                {
+                    conlite.updatetaikhoan(txttaikhoan.Text, txtmatkhau.Text);
+                }
                 Program.moFrom = true;
                 ((Form)this.TopLevelControl).Close();
             }

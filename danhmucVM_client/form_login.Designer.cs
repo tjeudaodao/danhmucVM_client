@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form_login));
             this.pbavatar = new System.Windows.Forms.PictureBox();
-            this.btnclose = new System.Windows.Forms.Button();
             this.btn_home = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblogin = new System.Windows.Forms.Label();
@@ -47,20 +46,6 @@
             this.pbavatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbavatar.TabIndex = 2;
             this.pbavatar.TabStop = false;
-            // 
-            // btnclose
-            // 
-            this.btnclose.BackColor = System.Drawing.Color.White;
-            this.btnclose.FlatAppearance.BorderSize = 0;
-            this.btnclose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnclose.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnclose.Image = ((System.Drawing.Image)(resources.GetObject("btnclose.Image")));
-            this.btnclose.Location = new System.Drawing.Point(753, 2);
-            this.btnclose.Name = "btnclose";
-            this.btnclose.Size = new System.Drawing.Size(45, 41);
-            this.btnclose.TabIndex = 1;
-            this.btnclose.UseVisualStyleBackColor = false;
-            this.btnclose.Click += new System.EventHandler(this.btnclose_Click);
             // 
             // btn_home
             // 
@@ -116,12 +101,12 @@
             this.Controls.Add(this.lbchaomung);
             this.Controls.Add(this.lblogin);
             this.Controls.Add(this.pbavatar);
-            this.Controls.Add(this.btnclose);
             this.Controls.Add(this.btn_home);
             this.Controls.Add(this.pictureBox1);
             this.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "form_login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VM_login";
@@ -136,7 +121,6 @@
 
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btn_home;
-        private System.Windows.Forms.Button btnclose;
         private System.Windows.Forms.PictureBox pbavatar;
         private System.Windows.Forms.Label lblogin;
         private System.Windows.Forms.Label lbchaomung;
