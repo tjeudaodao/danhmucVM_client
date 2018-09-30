@@ -497,24 +497,7 @@ namespace danhmucVM_client
                 {
                     ham.taovainfileexcel(con.laythongtinIn(ngaybatdau, ngayketthuc), tongsoma, ngaybatdau, ngayketthuc);
 
-                    PopupNotifier popexcel = new PopupNotifier();
-                    popexcel.TitleText = "Thông báo";
-                    popexcel.ContentText = "Vừa xuất file excel \nClick vào đây để mở file";
-                    popexcel.IsRightToLeft = false;
-                    popexcel.Image = Properties.Resources.excel;
-                    popexcel.TitleColor = System.Drawing.Color.Navy;
-                    popexcel.TitleFont = new System.Drawing.Font("Comic Sans MS", 12, System.Drawing.FontStyle.Underline);
-                    popexcel.BodyColor = System.Drawing.Color.DimGray;
-                    popexcel.Size = new System.Drawing.Size(380, 130);
-                    popexcel.ImageSize = new System.Drawing.Size(100, 100);
-                    popexcel.ImagePadding = new Padding(15);
-                    popexcel.ContentColor = System.Drawing.Color.White;
-                    popexcel.ContentFont = new System.Drawing.Font("Comic Sans MS", 15, System.Drawing.FontStyle.Bold);
-                    popexcel.Delay = 3500;
-                    popexcel.BorderColor = System.Drawing.Color.DimGray;
-                    popexcel.HeaderHeight = 1;
-                    popexcel.Click += Popexcel_Click;
-                    popexcel.Popup();
+                   
                 }
                 //if (ham.Xuatfileexcel(dt, ngaybatdau, ngayketthuc, tongsoma))
                 //{

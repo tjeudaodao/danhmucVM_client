@@ -164,7 +164,7 @@
             this.lbdatrunghaychua.Name = "lbdatrunghaychua";
             this.lbdatrunghaychua.Size = new System.Drawing.Size(371, 70);
             this.lbdatrunghaychua.TabIndex = 4;
-            this.lbdatrunghaychua.Text = "Đã trưng chưa ?";
+            this.lbdatrunghaychua.Text = "Trưng ?";
             this.lbdatrunghaychua.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbduocbanhaychua
@@ -176,7 +176,7 @@
             this.lbduocbanhaychua.Name = "lbduocbanhaychua";
             this.lbduocbanhaychua.Size = new System.Drawing.Size(371, 70);
             this.lbduocbanhaychua.TabIndex = 4;
-            this.lbduocbanhaychua.Text = "Được bán hay chưa ?";
+            this.lbduocbanhaychua.Text = "Bán ?";
             this.lbduocbanhaychua.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label6
