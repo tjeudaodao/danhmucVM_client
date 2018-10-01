@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Threading;
+using System.Diagnostics;
 
 namespace danhmucVM_client
 {
@@ -17,14 +18,31 @@ namespace danhmucVM_client
         dangnhap usdangnhap = new dangnhap();
         taotaikhoan ustaotaikhoan = new taotaikhoan();
         Thread chay3giay;
-        //Thread khoidong;
+        Thread closecheckupdate;
 
         private ManualResetEvent dieukhien = new ManualResetEvent(true);
 
         public form_login()
         {
             InitializeComponent();
-            
+
+            closecheckupdate = new Thread(CloseCheckupdate);
+            closecheckupdate.IsBackground = true;
+            closecheckupdate.Start();
+        }
+        public void CloseCheckupdate()
+        {
+            Process[] GetPArry = Process.GetProcesses();
+            foreach (Process testProcess in GetPArry)
+            {
+                string ProcessName = testProcess.ProcessName;
+                if (ProcessName.CompareTo("checkUpdate") == 0)
+                {
+                    testProcess.Kill();
+                    return;
+                }
+
+            }
         }
         //void khoidongct()
         //{
@@ -46,7 +64,7 @@ namespace danhmucVM_client
         //        {
         //            lbchaomung.Text = "WELCOME ... " + tentk[0].ToUpper();
         //        }));
-                
+
         //        chay3giay = new Thread(ham3giay);
         //        chay3giay.IsBackground = true;
         //        chay3giay.Start();
