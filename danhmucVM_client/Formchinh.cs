@@ -14,6 +14,7 @@ using System.Globalization;
 using AnhLuu = danhmucVM_client.Properties.Resources;
 using System.Threading;
 using System.IO;
+using System.Diagnostics;
 
 namespace danhmucVM_client
 {
@@ -46,7 +47,8 @@ namespace danhmucVM_client
         Thread tudongloadanh;
         Thread capnhatanhmoi;
         Thread LoadLandau;
-        
+        Thread closecheckupdate;
+
         public Formchinh()
         {
             InitializeComponent();
@@ -65,6 +67,24 @@ namespace danhmucVM_client
             capnhatanhmoi = new Thread(taianhstuserver);
             capnhatanhmoi.IsBackground = true;
             capnhatanhmoi.Start();
+
+            closecheckupdate = new Thread(CloseCheckupdate);
+            closecheckupdate.IsBackground = true;
+            closecheckupdate.Start();
+        }
+        public void CloseCheckupdate()
+        {
+            Process[] GetPArry = Process.GetProcesses();
+            foreach (Process testProcess in GetPArry)
+            {
+                string ProcessName = testProcess.ProcessName;
+                if (ProcessName.CompareTo("checkUpdate") == 0)
+                {
+                    testProcess.Kill();
+                    return;
+                }
+
+            }
         }
         void loadLandautien()
         {
